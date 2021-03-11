@@ -35,7 +35,7 @@ else grade = Math.floor(index);
 
 // testing via console logs of text, index, grade
 console.log("text", text);
-console.log("index", index);
+console.log("numWords", numWords);
 console.log("grade", grade);
 
 // adding the numWords element into the popup.html
