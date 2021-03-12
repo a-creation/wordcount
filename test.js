@@ -1,4 +1,5 @@
 // check if variables have been declared, if not declare the variables and assign them to undefined
+
 if (
   typeof text !== "undefined" &&
   typeof numwords !== "undefined" &&
@@ -16,13 +17,14 @@ if (
   let s = undefined;
   let index = undefined;
 }
+
 // assign text to selection on the current window
 text = window.getSelection().toString();
 
 // calculate number of words, characters, and sentences
-numWords = text.split(/\W+/).length - 1;
+numWords = text.split(/\W+/).length;
 numCharacters = text.replace(" ", "").length;
-numSentences = text.concat(" ").split(". ").length - 1;
+numSentences = text.concat(" ").split(". ").length;
 
 //algorithm to determine level of writing
 l = numCharacters * (100 / numWords);
@@ -43,29 +45,83 @@ console.log("grade", grade);
 
 // append number of words selected and grade to document body
 
-// ** bug ** cannot update the textbox
+// 🐛🐛🐛🐛🐛🐛🐛🐛🐛🐛🐛🐛🐛🐛 "it's a feauture not a bug" 🐛🐛🐛🐛🐛🐛🐛🐛🐛🐛🐛🐛🐛🐛
 
-if (
-  typeof testText !== "undefined" &&
-  typeof wordCounterText !== "undefined" &&
-  typeof gradeText !== "undefined"
-) {
-  let textContainer = undefined;
-  let wordCounterText = undefined;
-  let gradeText = undefined;
+// if (
+//   typeof wordCounterText !== "undefined" &&
+//   typeof gradeText !== "undefined"
+// ) {
+//   let textContainer = undefined;
+//   let wordCounterText = undefined;
+//   let gradeText = undefined;
+// }&& !wordCounterText && !gradeText
+
+if (typeof textContainer !== "undefined") {
+  // let textContainer = undefined;
+  // let wordCounterText = undefined;
+  // let gradeText = undefined;
+  wordCounterText.value = numWords.toString() + " words selected.";
+  gradeText.value = "Grade: " + grade;
 }
 
-textContainer = document.createElement("div", { id: "textContainer" });
-wordCounterText = document.createElement("textarea");
-gradeText = document.createElement("textarea");
+if (typeof textContainer === "undefined") {
+  let textContainer = document.createElement("div", { id: "textContainer" });
+  let wordCounterText = document.createElement("textarea");
+  let gradeText = document.createElement("textarea");
+  wordCounterText.readOnly = true;
+  gradeText.readOnly = true;
+  gradeText.value = "Grade: " + grade;
+  wordCounterText.value = numWords.toString() + " words selected.";
+  textContainer.appendChild(wordCounterText);
+  textContainer.appendChild(gradeText);
+  document.body.appendChild(textContainer);
+}
+// } else {
 
-wordCounterText.readOnly = true;
-gradeText.readOnly = true;
+//   // textContainer.replaceChild();
+// }
 
-textContainer.appendChild(wordCounterText);
-textContainer.appendChild(gradeText);
+// textContainer = document.createElement("div");
+// wordCounterText = document.createElement("textarea");
+// gradeText = document.createElement("textarea");
 
-gradeText.value = "Grade: " + grade;
+// textContainer.appendChild(wordCounterText);
+// textContainer.appendChild(gradeText);
+// gradeText.value = "Grade: " + grade;
+// document.body.appendChild(textContainer);
+// wordCounterText.value = numWords.toString() + " words selected.";
 
-document.body.appendChild(textContainer);
-wordCounterText.value = numWords.toString() + " words selected.";
+// if (!textContainer || !textContainer.hasChildNodes()) {
+//   let textContainer = document.createElement("div");
+//   textContainer.appendChild(wordCounterText);
+//   textContainer.appendChild(gradeText);
+//   gradeText.value = "Grade: " + grade;
+//   wordCounterText.value = numWords.toString() + " words selected.";
+//   wordCounterText.readOnly = true;
+//   gradeText.readOnly = true;
+// } else {
+//   gradeText.value = "Grade: " + grade;
+//   // textContainer.appendChild(gradeText);
+//   textContainer.replaceChild(gradeText, gradeText);
+// }
+
+/*******  original code snippet?   ******/
+// if (
+//   typeof wordCounterText !== "undefined" &&
+//   typeof gradeText !== "undefined"
+// ) {
+//   let textContainer = undefined;
+//   let wordCounterText = undefined;
+//   let gradeText = undefined;
+// }
+
+// textContainer = document.createElement("div");
+// wordCounterText = document.createElement("textarea");
+// gradeText = document.createElement("textarea");
+// wordCounterText.readOnly = true;
+// gradeText.readOnly = true;
+// textContainer.appendChild(wordCounterText);
+// textContainer.appendChild(gradeText);
+// gradeText.value = "Grade: " + grade;
+// document.body.appendChild(textContainer);
+// wordCounterText.value = numWords.toString() + " words selected.";

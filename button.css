@@ -1,13 +1,20 @@
 button {
     height: 30px;
-    width: 30px;
+    width: 170px;
+    font-family: 'Shippori Mincho', serif;
+    box-shadow: 5px 6px #808080;
+    background-color: hsl(49, 100%, 60%);
     outline: none;
     margin: 10px;
     border: none;
-    border-radius: 2px;
+    border-radius: 20px;
   }
   
   button.current {
     box-shadow: 0 0 0 2px white,
                 0 0 0 4px black;
   }
+
+body img {
+  height: 20px;
+}t
